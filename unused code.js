@@ -78,3 +78,9 @@
 //         .catch(error => console.error(error)); /* handle errors */
 //
 // }
+
+
+<br>
+    // <h6 className="card-title">Genre: ${genre}</h6>
+    // <br>
+    // <h6 className="card-title">Director: ${director}</h6>

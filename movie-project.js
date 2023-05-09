@@ -1,16 +1,20 @@
+// (function() {
 'use strict';
 
 // Delay the execution of this code by 5 seconds
 setTimeout(function() {
+getMovies();
+}, 3000)
+
     // Code to load or display content goes here
 
     // Populate the movie cards with info from db.json (glitch)
 function getMovies () {
 return fetch('https://golden-woozy-frog.glitch.me/movies')
     .then(response => response.json())
-    }
 
-getMovies().then( movies => {
+
+.then( movies => {
 
     let markup = "";
     movies.forEach( movie => {
@@ -18,6 +22,7 @@ getMovies().then( movies => {
         const rating = movie.rating;
         const director = movie.director;
         const genre = movie.genre;
+        const id = movie.id;
         console.log("each movie on GET request: ", movie)
 
         markup +=
@@ -27,17 +32,17 @@ getMovies().then( movies => {
     <h6 class="card-title">Title: ${title}</h6>
      <br>
     <h6 class="card-title">Rating: ${rating}</h6>
-     <br>
-    <h6 class="card-title">Genre: ${genre}</h6>
-     <br>
-    <h6 class="card-title">Director: ${director}</h6>
+    <br>
+    <h6 class="card-title">Reference # ${id}</h6>
+    
    
   </div>
 </div>`;
         $(".movieInfo").html(markup);
     });
 })
-}, 3000)
+}
+
 
 
 
@@ -64,6 +69,8 @@ postForm.addEventListener('submit', (event) => {
         console.log(`Post added: ${JSON.stringify(data)}`);
         // Reset form after successful submission
         postForm.reset();
+        //new get request
+        getMovies();
     })
         .catch((error) => {
             console.error(`Error adding post: ${error.message}`);
@@ -71,8 +78,16 @@ postForm.addEventListener('submit', (event) => {
 });
 
 
+
+
+
+
 //removes loading message after time interval (when content displays)
 setTimeout(function() {
     $("#loading").fadeOut().empty();
 }, 3000);
+
+
+
+
 

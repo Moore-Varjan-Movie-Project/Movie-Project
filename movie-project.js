@@ -1,16 +1,20 @@
+// (function() {
 'use strict';
 
 // Delay the execution of this code by 5 seconds
 setTimeout(function() {
+getMovies();
+}, 3000)
+
     // Code to load or display content goes here
 
     // Populate the movie cards with info from db.json (glitch)
 function getMovies () {
 return fetch('https://golden-woozy-frog.glitch.me/movies')
     .then(response => response.json())
-    }
 
-getMovies().then( movies => {
+
+.then( movies => {
 
     let markup = "";
     movies.forEach( movie => {
@@ -34,7 +38,8 @@ getMovies().then( movies => {
         $(".movieInfo").html(markup);
     });
 })
-}, 3000)
+}
+
 
 
 
@@ -61,33 +66,25 @@ postForm.addEventListener('submit', (event) => {
         console.log(`Post added: ${JSON.stringify(data)}`);
         // Reset form after successful submission
         postForm.reset();
+        //new get request
+        getMovies();
     })
         .catch((error) => {
             console.error(`Error adding post: ${error.message}`);
         });
 });
 
-// Select the element to append to
-const container = document.querySelector('.card');
 
-// Get the input value
-const inputValue = document.querySelector('#input').value;
 
-// Append the new data
-container.innerHTML += `<div class="card">
-    <img class="card-img-top" src="img/movieposter_en.jpg" alt="Card image cap">
-        <div class="card-body">
-            <h6 class="card-title">Title: ${userInput}</h6>
-            <br>
-                <h6 class="card-title">Rating: ${userInput}</h6>
-        </div>
-</div>`;
+
 
 
 //removes loading message after time interval (when content displays)
 setTimeout(function() {
     $("#loading").fadeOut().empty();
 }, 3000);
+
+
 
 
 

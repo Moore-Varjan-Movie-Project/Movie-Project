@@ -84,3 +84,21 @@
     // <h6 className="card-title">Genre: ${genre}</h6>
     // <br>
     // <h6 className="card-title">Director: ${director}</h6>
+
+
+    // // Select the element to append to
+    // const container = document.querySelector('.card');
+    //
+    // // Get the input value
+    // const inputValue = document.querySelector('#input').value;
+    //
+    // // Append the new data
+    // console.log(container);
+    // container.innerHTML += `<div class="card">
+    //     <img class="card-img-top" src="img/movieposter_en.jpg" alt="Card image cap">
+    //         <div class="card-body">
+    //             <h6 class="card-title">Title: ${userInput}</h6>
+    //             <br>
+    //                 <h6 class="card-title">Rating: ${userInput}</h6>
+    //         </div>
+    // </div>`;

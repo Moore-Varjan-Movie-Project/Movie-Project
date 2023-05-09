@@ -10,18 +10,14 @@
 <body>
 <h1>Movie Project</h1>
 
-<form action="" method="get" class="addMovieForm">
-    <div class="form-example">
-        <label for="movieTitle">Enter Movie Title: </label>
-        <input type="text" name="movieTitle" id="movieTitle" required>
-    </div>
-    <div class="form-example">
-        <label for="movieRating">Enter a Rating: </label>
-        <input type="number" name="movieRating" id="movieRating" required>
-    </div>
-    <div class="form-example">
-        <input type="submit" value="Add Movie">
-    </div>
+<form id="postForm">
+    <label>Title:</label>
+    <input type="text" name="title">
+    <br>
+    <label>Rating</label>
+    <input type="number" name="rating">
+    <br>
+    <button type="submit">Add Post</button>
 </form>
 
 

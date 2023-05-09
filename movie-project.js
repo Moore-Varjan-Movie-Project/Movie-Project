@@ -40,71 +40,35 @@ getMovies().then( movies => {
 }, 3000)
 
 
-// Allow users to add movies and ratings to json file
-const searchButton = $(`.submit`) // searchButton == "add movie button"
-searchButton.on('click', function (e) {
-    e.preventDefault()
-    const userInput = $(`.addMovieForm`).val()
-    // console.log('click')
-    console.log("userInput on add: ", userInput)
-    // let addedMovieObject = {id: , title: userInput}
-    // addPost(addedMovieObject)
 
+const postForm = document.querySelector('#postForm');
+
+postForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const post = Object.fromEntries(formData.entries());
+
+    const addPost = new Promise((resolve, reject) => {
+        fetch('https://golden-woozy-frog.glitch.me/movies', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(post)
+        })
+            .then(response => response.json())
+            .then(data => resolve(data))
+            .catch(error => reject(error));
+    });
+
+    addPost.then((data) => {
+        console.log(`Post added: ${JSON.stringify(data)}`);
+        // Reset form after successful submission
+        postForm.reset();
+    })
+        .catch((error) => {
+            console.error(`Error adding post: ${error.message}`);
+        });
 });
-
-
-
-// addPost(movieObj){
-//  post request body: movieObj
-// tosee updated movies: new GET request to see the latest movies
-// }
-// function addPost(title, content, posts) {
-//     const newPost = {
-//         title: title,
-//         content: content
-//     };
-//     posts.push(newPost);
-//     // Update the JSON file on the server
-//     fetch('posts.json', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(posts)
-//     });
-// }
-// const form = document.querySelector('addMovieForm');
-// form.addEventListener('submit', event => {
-//     event.preventDefault();
-//     const titleInput = document.querySelector('#title');
-//     const ratingInput = document.querySelector('#rating');
-//     const title = titleInput.value;
-//     const rating = contentTextarea.value;
-//     addPost(title, rating, posts);
-// });
-
-
-
-// const reviewObj = {
-//     title: ' ',
-//     rating: ' ',
-//     // director: ' ',
-//     // genre: ' ',
-// };
-// const url = 'https://golden-woozy-frog.glitch.me/movies';
-// const options = {
-//
-//     method: 'POST',
-//     headers: {
-//         'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(reviewObj),
-// };
-
-// wrap this functionality .. in a function "handleAddMovie(newMovie)"
-// fetch(url, options)
-//     .then( response => console.log(response) ) /* review was created successfully */
-//     .catch( error => console.error(error) ); /* handle errors */
 
 
 //removes loading message after time interval (when content displays)

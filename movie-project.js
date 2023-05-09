@@ -22,6 +22,7 @@ return fetch('https://golden-woozy-frog.glitch.me/movies')
         const rating = movie.rating;
         const director = movie.director;
         const genre = movie.genre;
+        const id = movie.id;
         console.log("each movie on GET request: ", movie)
 
         markup +=
@@ -31,6 +32,8 @@ return fetch('https://golden-woozy-frog.glitch.me/movies')
     <h6 class="card-title">Title: ${title}</h6>
      <br>
     <h6 class="card-title">Rating: ${rating}</h6>
+    <br>
+    <h6 class="card-title">Reference # ${id}</h6>
     
    
   </div>

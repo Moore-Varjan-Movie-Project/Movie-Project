@@ -2,31 +2,32 @@
 'use strict';
 
 // Delay the execution of this code by 5 seconds
-setTimeout(function() {
-getMovies();
-}, 1000)
+setTimeout(function () {
+    getMovies();
+}, 2000)
 
-    // Code to load or display content goes here
+// Code to load or display content goes here
 
-    // Populate the movie cards with info from db.json (glitch)
-function getMovies () {
-return fetch('https://golden-woozy-frog.glitch.me/movies')
-    .then(response => response.json())
+// Populate the movie cards with info from db.json (glitch)
+function getMovies() {
+    $(".movieInfo").html("");
+    return fetch('https://golden-woozy-frog.glitch.me/movies')
+        .then(response => response.json())
 
 
-.then( movies => {
+        .then(movies => {
 
-    let markup = "";
-    movies.forEach( movie => {
-        const title = movie.title;
-        const rating = movie.rating;
-        const director = movie.director;
-        const genre = movie.genre;
-        const movieId = movie.id;
-        console.log("each movie on GET request: ", movie)
+            let markup = "";
+            movies.forEach(movie => {
+                const title = movie.title;
+                const rating = movie.rating;
+                const director = movie.director;
+                const genre = movie.genre;
+                const movieId = movie.id;
+                console.log("each movie on GET request: ", movie)
 
-        markup +=
-            `<div class="card">
+                markup +=
+                    `<div class="card" id="${movieId}">
   <img class="card-img-top" src="img/movieposter_en.jpg" alt="Card image cap">
   <div class="card-body">
     <h6 class="card-title">Title: ${title}</h6>
@@ -37,12 +38,10 @@ return fetch('https://golden-woozy-frog.glitch.me/movies')
   <button type="button" class="editBtn">Edit</button>
   <button type="button" class="deleteBtn">Delete</button>
 </div>`;
-        $(".movieInfo").html(markup);
-    });
-})
+                $(".movieInfo").html(markup);
+            });
+        })
 }
-ggg
-
 
 
 const postForm = document.querySelector('#postForm');
@@ -56,7 +55,7 @@ postForm.addEventListener('submit', (event) => {
     const addPost = new Promise((resolve, reject) => {
         fetch('https://golden-woozy-frog.glitch.me/movies', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(post)
         })
             .then(response => response.json())
@@ -76,45 +75,65 @@ postForm.addEventListener('submit', (event) => {
         });
 });
 
-//
 // Set the API endpoint URL and post ID
-// const apiEndpoint = 'https://golden-woozy-frog.glitch.me/movies';
-//
-//
-//
-// // Create a Promise to send the DELETE request to the API endpoint
-// const deleteMovie = new Promise((resolve, reject) => {
-//     $.ajax({
-//         url: apiEndpoint + movieId,
-//         method: 'DELETE',
-//         success: function(response) {
-//             // Resolve the Promise with the response data
-//
-//             resolve(response);
-//         },
-//         error: function() {
-//             // Reject the Promise with an error message
-//             reject('Error deleting post: ' + error);
-//         }
-//     });
-// });
-//
-// // Get a reference to the button element
-// const deleteButton = document.getElementById('deleteBtn');
-//
-// // Attach an event listener to the button element to call the Promise when the button is clicked
-// deleteButton.addEventListener('click', function() {
-//     deleteMovie.then((response) => {
-//         console.log('Post deleted successfully');
-//     }).catch((error) => {
-//         console.log(error);
-//     });
-// });
+const apiEndpoint = 'https://golden-woozy-frog.glitch.me/movies';
 
+// Create a Promise to send the DELETE request to the API endpoint
+function deleteMovie(id) {
+    $.ajax(apiEndpoint + '/' + id, {
+        type: 'DELETE'
+    }).done(function (data, status) {
+        console.log(data);
+        console.log(status);
+    });
+}
+
+// Click function to delete movies
+$(document).on('click', 'button.deleteBtn', function (e) {
+    let deleteMovieId = $(this).parent("div").attr("id");
+    console.log(deleteMovieId);
+    deleteMovie(deleteMovieId)
+    getMovies();
+})
+
+// Click function to edit movies
+
+// function deleteMovie(id) {
+//     $.ajax(apiEndpoint + '/' + id, {
+//         type: 'DELETE'
+//     }).done(function (data, status) {
+//         console.log(data);
+//         console.log(status);
+//     });
+// }
+// const postForm = document.querySelector('#postForm');
+
+    let dropdownIdValue = getMovies();
+function editMovie(id) {
+    $.ajax(apiEndpoint + '/' + id, {
+        type: "PUT",
+        body: JSON.stringify({
+            title: document.querySelector('#edited-title').value,
+            rating: document.querySelector('#edit-rating').value,
+            genre: document.querySelector('#edit-genre').value
+        }),
+        headers: {"Content-Type": "application/json"}
+    }).done(function (data, status) {
+        console.log(data);
+        console.log(status);
+    });
+}
+
+$(document).on('click', 'button.editBtn', function (e) {
+    let editMovieId = $(this).parent("div").attr("id");
+    console.log(editMovieId);
+    editMovie(editMovieId)
+    getMovies();
+})
 
 
 //removes loading message after time interval (when content displays)
-setTimeout(function() {
+setTimeout(function () {
     $("#loading").fadeOut().empty();
 }, 3000);
 

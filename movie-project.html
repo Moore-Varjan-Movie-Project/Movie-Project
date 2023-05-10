@@ -19,6 +19,32 @@
     <br>
     <button type="submit">Add Movie</button>
 </form>
+<!--    Change movie data form-->
+<form class="mb-5 text-center">
+    <label for="current-movie">Edit a movie</label>
+    <select name="current-movie" id="current-movie">
+        <option id="first-option">Select a movie</option>
+    </select>
+    <span id="movie-id"></span>
+    <label for="edited-title">Change the title</label>
+    <input type="text" id="edited-title" name="edited-movie-title">
+    <label for="edit-genre">Change genre</label>
+    <input type="text" id="edit-genre" name="edited-genre">
+    <label for="edit-rating">Change the rating</label>
+    <select id="edit-rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+    </select>
+    <button class="btn btn-primary" type="submit" id="edit-movie-btn" disabled>Submit</button>
+</form>
 
 
 <div class="loadingMessage" id="loading">

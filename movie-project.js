@@ -4,7 +4,7 @@
 // Delay the execution of this code by 5 seconds
 setTimeout(function() {
 getMovies();
-}, 3000)
+}, 1000)
 
     // Code to load or display content goes here
 
@@ -22,7 +22,7 @@ return fetch('https://golden-woozy-frog.glitch.me/movies')
         const rating = movie.rating;
         const director = movie.director;
         const genre = movie.genre;
-        const id = movie.id;
+        const movieId = movie.id;
         console.log("each movie on GET request: ", movie)
 
         markup +=
@@ -32,11 +32,10 @@ return fetch('https://golden-woozy-frog.glitch.me/movies')
     <h6 class="card-title">Title: ${title}</h6>
      <br>
     <h6 class="card-title">Rating: ${rating}</h6>
-    <br>
-    <h6 class="card-title">Reference # ${id}</h6>
-    
-   
+    <h6 class="card-title">Reference # ${movieId}</h6>
   </div>
+  <button type="button" class="editBtn">Edit</button>
+  <button type="button" class="deleteBtn">Delete</button>
 </div>`;
         $(".movieInfo").html(markup);
     });
@@ -77,8 +76,40 @@ postForm.addEventListener('submit', (event) => {
         });
 });
 
-
-
+//
+// Set the API endpoint URL and post ID
+// const apiEndpoint = 'https://golden-woozy-frog.glitch.me/movies';
+//
+//
+//
+// // Create a Promise to send the DELETE request to the API endpoint
+// const deleteMovie = new Promise((resolve, reject) => {
+//     $.ajax({
+//         url: apiEndpoint + movieId,
+//         method: 'DELETE',
+//         success: function(response) {
+//             // Resolve the Promise with the response data
+//
+//             resolve(response);
+//         },
+//         error: function() {
+//             // Reject the Promise with an error message
+//             reject('Error deleting post: ' + error);
+//         }
+//     });
+// });
+//
+// // Get a reference to the button element
+// const deleteButton = document.getElementById('deleteBtn');
+//
+// // Attach an event listener to the button element to call the Promise when the button is clicked
+// deleteButton.addEventListener('click', function() {
+//     deleteMovie.then((response) => {
+//         console.log('Post deleted successfully');
+//     }).catch((error) => {
+//         console.log(error);
+//     });
+// });
 
 
 

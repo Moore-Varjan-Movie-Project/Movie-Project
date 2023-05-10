@@ -88,20 +88,46 @@ function deleteMovie(id) {
     });
 }
 
-// Get a reference to the button element
-// const deleteButton = document.getElementById('deleteBtn');
-// Attach an event listener to the button element to call the Promise when the button is clicked
-// deleteButton.addEventListener('click', function() {
-//     deleteMovie.then((response) => {
-//         console.log('Post deleted successfully');
-//     }).catch((error) => {
-//         console.log(error);
-//     });
-// });
+// Click function to delete movies
 $(document).on('click', 'button.deleteBtn', function (e) {
     let deleteMovieId = $(this).parent("div").attr("id");
     console.log(deleteMovieId);
     deleteMovie(deleteMovieId)
+    getMovies();
+})
+
+// Click function to edit movies
+
+// function deleteMovie(id) {
+//     $.ajax(apiEndpoint + '/' + id, {
+//         type: 'DELETE'
+//     }).done(function (data, status) {
+//         console.log(data);
+//         console.log(status);
+//     });
+// }
+// const postForm = document.querySelector('#postForm');
+
+    let dropdownIdValue = getMovies();
+function editMovie(id) {
+    $.ajax(apiEndpoint + '/' + id, {
+        type: "PUT",
+        body: JSON.stringify({
+            title: document.querySelector('#edited-title').value,
+            rating: document.querySelector('#edit-rating').value,
+            genre: document.querySelector('#edit-genre').value
+        }),
+        headers: {"Content-Type": "application/json"}
+    }).done(function (data, status) {
+        console.log(data);
+        console.log(status);
+    });
+}
+
+$(document).on('click', 'button.editBtn', function (e) {
+    let editMovieId = $(this).parent("div").attr("id");
+    console.log(editMovieId);
+    editMovie(editMovieId)
     getMovies();
 })
 

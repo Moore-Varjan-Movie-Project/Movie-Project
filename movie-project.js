@@ -97,39 +97,45 @@ $(document).on('click', 'button.deleteBtn', function (e) {
 })
 
 // Click function to edit movies
-
-// function deleteMovie(id) {
-//     $.ajax(apiEndpoint + '/' + id, {
-//         type: 'DELETE'
+// function editMovies(id) {
+// $.ajax(apiEndpoint + '/' + id, {
+//     type: 'PUT', // or 'PATCH' if the API supports partial updates
+//     body: JSON.stringify({
+//         title: document.querySelector('#edited-title').value,
+//         rating: document.querySelector('#edit-rating').value,
+//         genre: document.querySelector('#edit-genre').value
 //     }).done(function (data, status) {
-//         console.log(data);
-//         console.log(status);
-//     });
+//             console.log(data);
+//             console.log(status);
+//     },
+//     error: function(status, error) {
+//         console.error('Error updating item:', error);
+//     }
 // }
-// const postForm = document.querySelector('#postForm');
 
-    let dropdownIdValue = getMovies();
-function editMovie(id) {
-    $.ajax(apiEndpoint + '/' + id, {
-        type: "PUT",
-        body: JSON.stringify({
-            title: document.querySelector('#edited-title').value,
-            rating: document.querySelector('#edit-rating').value,
-            genre: document.querySelector('#edit-genre').value
-        }),
-        headers: {"Content-Type": "application/json"}
-    }).done(function (data, status) {
-        console.log(data);
-        console.log(status);
-    });
-}
-
-$(document).on('click', 'button.editBtn', function (e) {
-    let editMovieId = $(this).parent("div").attr("id");
-    console.log(editMovieId);
-    editMovie(editMovieId)
-    getMovies();
-})
+// document.querySelector('.editBtn').addEventListener("click", function (e) {
+//     e.preventDefault();
+//     document.querySelector('#movieBtn').setAttribute('disabled','')
+//     document.querySelector('#edit-movie-btn').setAttribute('disabled','')
+//     let dropdownIdValue = document.querySelector('.movieInfo').innerHTML;
+//     fetch(`/api/movies/${dropdownIdValue}`, {
+//         method: "PATCH",
+//         body: JSON.stringify({
+//             title: document.querySelector('#edited-title').value,
+//             rating: document.querySelector('#edit-rating').value,
+//             genre: document.querySelector('#edit-genre').value
+//         }),
+//         headers: {"Content-Type": "application/json"}
+//     }).then().catch(error => console.log(error));
+//     getMovies();
+// })
+//
+// $(document).on('click', 'button.editBtn', function (e) {
+//     let editMovieId = $(this).parent("div").attr("id");
+//     console.log(editMovieId);
+//     editMovie(editMovieId)
+//     getMovies();
+// })
 
 
 //removes loading message after time interval (when content displays)

@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700&display=swap');
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@ 100, 200, 300, 400, 700&family=Titillium+Web:ital,wght@100,200, 300, 400, 700&display=swap');
+</style>
 
 *{
     margin: 0;
@@ -7,21 +9,19 @@
 }
 
 
-.btn{
-    display: flex;
-    justify-content: end;
-}
+h2{
+    font-family: 'poppins', sans-serif;
+    color: white;
 
-.hi{
-    font-family:  "Poppins", Sans-Serif;
 }
 
 .h6{
-    font-family:  "Poppins", Sans-Serif;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 body{
     background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);
+    /*background: linear-gradient(to right, silver, cornsilk, silver);*/
     background-size: cover;
     animation: animateBackground 10s ease-in-out infinite;
 
@@ -41,6 +41,9 @@ body{
 
 .card-body{
     width: 20rem;
+    background: whitesmoke;
+    color: black;
+    font-weight: 400;
 }
 
 .card-container{
@@ -55,8 +58,19 @@ body{
 }
 
 .card{
-    margin: 2px;
+    margin: 3px;
+}
+
+#input{
+    display: flex;
+    justify-content: end;
+
 }
 
 
+
+
+button{
+    background-color: #FCAA43;
+}
 

@@ -1,21 +1,19 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,200&family=Poppins:wght@300&family=Sansita:ital@1&family=Titillium+Web:ital,wght@1,200&display=swap');
 
 
-
-*{
+* {
     margin: 0;
     Padding: 0;
 
 }
 
 
-h2{
+h2 {
     font-family: 'Sansita', sans-serif;
     color: limegreen;
     font-size: 60px;
     text-align: center;
+    margin-top: .5em;
 }
 
 .editForm {
@@ -30,7 +28,7 @@ h2{
     font-size: 15px;
 }
 
-#editForm{
+#editForm {
     border: 1px solid limegreen;
 }
 
@@ -41,7 +39,7 @@ h2{
 }
 
 
-.center{
+.center {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -49,7 +47,7 @@ h2{
     min-height: 100vh;
 }
 
-.ring{
+.ring {
     position: absolute;
     width: 200px;
     height: 200px;
@@ -58,11 +56,11 @@ h2{
 }
 
 @keyframes ring {
-    0%{
+    0% {
         transform: rotate(0deg);
         box-shadow: 1px 5px 2px #e65c00;
     }
-    50%{
+    50% {
         transform: rotate(0deg);
         box-shadow: 1px 5px 2px #18b201;
     }
@@ -71,7 +69,8 @@ h2{
         box-shadow: 1px 5px 2px #0456c8;
     }
 }
-.ring:before{
+
+.ring:before {
     positioin: absolute;
     content: "";
     left: 0;
@@ -93,18 +92,18 @@ span {
 
 @keyframes text {
     0% {
-color: black;
-}
+        color: black;
+    }
 }
 
-body{
+body {
     /*background: linear-gradient(to right, #833ab4, #fd1d1d, #fcb045);*/
     background: linear-gradient(to right, black, gray, black, gray, black);
     background-size: cover;
 
 }
 
-.card-body{
+.card-body {
     width: 20rem;
     background: linear-gradient(to right, grey, black);
     font-family: 'Montserrat', sans-serif;
@@ -113,9 +112,9 @@ body{
     font-weight: 400;
 }
 
-.card-container{
+.card-container {
     display: flex;
-   flex-wrap: wrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     perspective: 1000px;
@@ -165,9 +164,7 @@ select {
 }
 
 
-
-
-button{
+button {
     background-color: #FCAA43;
     font-family: 'poppins', sans-serif;
     border: 2px solid black;
@@ -181,4 +178,11 @@ button{
     font-family: 'poppins', sans-serif;
     border: 2px solid black;
 
+}
+
+a {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 1em 0;
 }

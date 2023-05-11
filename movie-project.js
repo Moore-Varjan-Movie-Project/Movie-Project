@@ -43,7 +43,7 @@ async function getMovies() {
                 $(".movieInfo").html(markup);
             });
             let movieOptions = ''
-            $("#current-movie").html(" <option class=\"dropdown\" id=\"first-option\">List of Movies</option>")
+            $("#current-movie").html(" <option class=\"dropdown\" id=\"first-option\">Select Movie</option>")
             movies.forEach(movie => {
                 movieOptions = `<option id="second-option">${movie.title}</option>`
                 $("#current-movie").append(movieOptions);

@@ -28,7 +28,7 @@ async function getMovies() {
 
                 markup +=
                     `<div class="card" id="${movieId}">
-  <img class="card-img-top" src="img/movieposter_en.jpg" alt="Card image cap">
+  <img class="card-img-top" src="img/film-g4afe793fb_1920.jpg" width="300" height = "300" alt="Card image cap">
   <div class="card-body">
     <h6 class="card-title">Title: ${title}</h6>
      <br>

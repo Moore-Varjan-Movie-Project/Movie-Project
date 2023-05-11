@@ -104,7 +104,7 @@ body{
 }
 
 .card-body{
-    /*width: 20rem;*/
+    width: 20rem;
     background: linear-gradient(to right, grey, black);
     font-family: 'Montserrat', sans-serif;
     /*background: black;*/

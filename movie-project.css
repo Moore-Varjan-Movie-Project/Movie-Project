@@ -15,7 +15,7 @@ h2{
     /*font-family: 'poppins', sans-serif;*/
     font-family: 'Sansita', sans-serif;
     color: limegreen;
-    font-size: 40px;
+    font-size: 50px;
 }
 
 .editForm{
@@ -144,16 +144,17 @@ body{
 
 input{
     border: 4px solid black;
-    margin: 0 4px;
+    margin-right: 20px;
 }
 
 lable{
-    margin: 0 3px;
+    margin-right: 10px;
 }
 
 
 select {
     border: 3px solid black;
+    margin-right: 20px;
 
 }
 
@@ -162,6 +163,7 @@ select {
 
 button{
     background-color: #FCAA43;
+    font-family: 'poppins', sans-serif;
     border: 2px solid black;
 }
 
@@ -170,6 +172,7 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'poppins', sans-serif;
     border: 2px solid black;
 
 }

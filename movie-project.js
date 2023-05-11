@@ -38,8 +38,6 @@ async function getMovies() {
   </div>
   <button type="button" class="deleteBtn">Delete</button>
 </div>`;
-
-
                 $(".movieInfo").html(markup);
             });
             let movieOptions = ''
@@ -51,7 +49,7 @@ async function getMovies() {
         })
 }
 
-
+//Add a new movie functionality
 const postForm = document.querySelector('#postForm');
 
 postForm.addEventListener('submit', (event) => {

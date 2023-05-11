@@ -13,7 +13,7 @@ h2 {
     color: limegreen;
     font-size: 60px;
     text-align: center;
-    margin-top: .5em;
+    margin-top: .2em;
 }
 
 .editForm {
@@ -143,6 +143,7 @@ body {
     display: flex;
     justify-content: end;
     border: 1px solid limegreen;
+    background: silver;
 
 
 }
@@ -150,6 +151,7 @@ body {
 input {
     border: 1px solid lime;
     margin-right: 10px;
+    background: silver;
 }
 
 label {
@@ -160,6 +162,7 @@ label {
 select {
     border: 1px solid limegreen;
     margin-right: 10px;
+    background: silver;
 
 }
 

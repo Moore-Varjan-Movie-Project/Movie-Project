@@ -4,7 +4,7 @@
 // Delay the execution of this code by 5 seconds
 setTimeout(function () {
     getMovies();
-}, 2000)
+}, 3000)
 
 // Code to load or display content goes here
 
@@ -33,9 +33,9 @@ function getMovies() {
     <h6 class="card-title">Title: ${title}</h6>
      <br>
     <h6 class="card-title">Rating: ${rating}</h6>
+    <h6 class ="card-title">Genre: ${genre}</h6>
     <h6 class="card-title">Reference # ${movieId}</h6>
   </div>
-  <button type="button" class="editBtn">Edit</button>
   <button type="button" class="deleteBtn">Delete</button>
 </div>`;
                 $(".movieInfo").html(markup);
@@ -96,45 +96,41 @@ $(document).on('click', 'button.deleteBtn', function (e) {
     getMovies();
 })
 
-// Click function to edit movies
-// function editMovies(id) {
-// $.ajax(apiEndpoint + '/' + id, {
-//     type: 'PUT', // or 'PATCH' if the API supports partial updates
-//     body: JSON.stringify({
-//         title: document.querySelector('#edited-title').value,
-//         rating: document.querySelector('#edit-rating').value,
-//         genre: document.querySelector('#edit-genre').value
-//     }).done(function (data, status) {
+
+
+
+//
+// const data = document.querySelector('#editForm');
+// function editMovie(data) {
+//     const movieEdit = {
+//         method: "PUT",
+//         headers: {
+//                 "Content-Type": "application/json",
+//             },
+//         body: JSON.stringify(data)
+//     };
+//     fetch('https://golden-woozy-frog.glitch.me/movies' + "/" + `${data.id}` + "/" + movieEdit)
+//         .then(function (data, status) {
 //             console.log(data);
 //             console.log(status);
-//     },
-//     error: function(status, error) {
-//         console.error('Error updating item:', error);
-//     }
+//         });
 // }
-
-// document.querySelector('.editBtn').addEventListener("click", function (e) {
-//     e.preventDefault();
-//     document.querySelector('#movieBtn').setAttribute('disabled','')
-//     document.querySelector('#edit-movie-btn').setAttribute('disabled','')
-//     let dropdownIdValue = document.querySelector('.movieInfo').innerHTML;
-//     fetch(`/api/movies/${dropdownIdValue}`, {
-//         method: "PATCH",
-//         body: JSON.stringify({
-//             title: document.querySelector('#edited-title').value,
-//             rating: document.querySelector('#edit-rating').value,
-//             genre: document.querySelector('#edit-genre').value
-//         }),
-//         headers: {"Content-Type": "application/json"}
-//     }).then().catch(error => console.log(error));
-//     getMovies();
-// })
 //
-// $(document).on('click', 'button.editBtn', function (e) {
-//     let editMovieId = $(this).parent("div").attr("id");
-//     console.log(editMovieId);
-//     editMovie(editMovieId)
-//     getMovies();
+//
+// $(document).on('click', '#edit-movie-btn', function (e) {
+//     e.preventDefault();
+//     let id = $(this).attr("value");
+//     console.log(id);
+//         let movieChanges = {
+//             "title": $(`#edited-title${id}`).val(),
+//             "rating": $(`#edit-rating${id}`).val(),
+//             "genre":$(`#edit-genre${id}`).val(),
+//             "id": id
+//
+//         }
+//    console.log(movieChanges)
+//    editMovie(movieChanges);
+//         getMovies()
 // })
 
 

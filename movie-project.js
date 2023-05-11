@@ -9,9 +9,9 @@ setTimeout(function () {
 // Code to load or display content goes here
 
 // Populate the movie cards with info from db.json (glitch)
-function getMovies() {
+async function getMovies() {
     $(".movieInfo").html("");
-    return fetch('https://golden-woozy-frog.glitch.me/movies')
+    return await fetch('https://golden-woozy-frog.glitch.me/movies')
         .then(response => response.json())
 
 
@@ -24,7 +24,7 @@ function getMovies() {
                 const director = movie.director;
                 const genre = movie.genre;
                 const movieId = movie.id;
-                console.log("each movie on GET request: ", movie)
+                // console.log("each movie on GET request: ", movie)
 
                 markup +=
                     `<div class="card" id="${movieId}">
@@ -38,8 +38,16 @@ function getMovies() {
   </div>
   <button type="button" class="deleteBtn">Delete</button>
 </div>`;
+
+
                 $(".movieInfo").html(markup);
             });
+            let movieOptions = ''
+            $("#current-movie").html(" <option class=\"dropdown\" id=\"first-option\">List of Movies</option>")
+            movies.forEach(movie => {
+                movieOptions = `<option id="second-option">${movie.title}</option>`
+                $("#current-movie").append(movieOptions);
+            })
         })
 }
 
@@ -79,8 +87,8 @@ postForm.addEventListener('submit', (event) => {
 const apiEndpoint = 'https://golden-woozy-frog.glitch.me/movies';
 
 // Create a Promise to send the DELETE request to the API endpoint
-function deleteMovie(id) {
-    $.ajax(apiEndpoint + '/' + id, {
+async function deleteMovie(id) {
+    await $.ajax(apiEndpoint + '/' + id, {
         type: 'DELETE'
     }).done(function (data, status) {
         console.log(data);
@@ -89,55 +97,54 @@ function deleteMovie(id) {
 }
 
 // Click function to delete movies
-$(document).on('click', 'button.deleteBtn', function (e) {
+$(document).on('click', 'button.deleteBtn', async function (e) {
+    e.preventDefault()
     let deleteMovieId = $(this).parent("div").attr("id");
     console.log(deleteMovieId);
-    deleteMovie(deleteMovieId)
-    getMovies();
+    await deleteMovie(deleteMovieId)
+    await getMovies();
+})
+// Edit movies function
+document.querySelector('#current-movie').addEventListener("click", async function () {
+    let dropdownValue = document.querySelector('#current-movie').value;
+    console.log(dropdownValue);
+    await fetch(apiEndpoint).then(response => response.json()).then(movies => {
+        movies.forEach(({title, rating, genre, id}) => {
+            if (dropdownValue === title) {
+                document.querySelector('#movie-id').innerHTML = id
+                document.querySelector('#movie-id').style.visibility = 'hidden'
+                document.querySelector('#edited-title').value = dropdownValue
+                document.querySelector('#edit-genre').value = genre
+                document.querySelector('#edit-rating').value = rating
+            }
+        })
+    });
 })
 
+//Edit movies to PUT function
+document.querySelector('#edit-movie-btn').addEventListener("click", async function (e) {
+    e.preventDefault();
 
+    let dropdownIdValue = document.querySelector('#movie-id').innerHTML;
+    console.log(dropdownIdValue);
+    await fetch(apiEndpoint + "/" + dropdownIdValue, {
+        method: "PUT",
+        body: JSON.stringify({
+            title: document.querySelector('#edited-title').value,
+            rating: document.querySelector('#edit-rating').value,
+            genre: document.querySelector('#edit-genre').value
+        }),
+        headers: {"Content-Type": "application/json"}
+    }).catch(error => console.log(error));
 
-
-//
-// const data = document.querySelector('#editForm');
-// function editMovie(data) {
-//     const movieEdit = {
-//         method: "PUT",
-//         headers: {
-//                 "Content-Type": "application/json",
-//             },
-//         body: JSON.stringify(data)
-//     };
-//     fetch('https://golden-woozy-frog.glitch.me/movies' + "/" + `${data.id}` + "/" + movieEdit)
-//         .then(function (data, status) {
-//             console.log(data);
-//             console.log(status);
-//         });
-// }
-//
-//
-// $(document).on('click', '#edit-movie-btn', function (e) {
-//     e.preventDefault();
-//     let id = $(this).attr("value");
-//     console.log(id);
-//         let movieChanges = {
-//             "title": $(`#edited-title${id}`).val(),
-//             "rating": $(`#edit-rating${id}`).val(),
-//             "genre":$(`#edit-genre${id}`).val(),
-//             "id": id
-//
-//         }
-//    console.log(movieChanges)
-//    editMovie(movieChanges);
-//         getMovies()
-// })
-
+    await getMovies();
+})
 
 //removes loading message after time interval (when content displays)
 setTimeout(function () {
     $("#loading").fadeOut().empty();
 }, 3000);
+
 
 
 

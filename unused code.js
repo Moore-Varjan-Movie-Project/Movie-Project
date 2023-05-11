@@ -102,3 +102,40 @@
     //                 <h6 class="card-title">Rating: ${userInput}</h6>
     //         </div>
     // </div>`;
+
+
+
+
+    //
+    // const data = document.querySelector('#editForm');
+    // function editMovie(data) {
+//     const movieEdit = {
+//         method: "PUT",
+//         headers: {
+//                 "Content-Type": "application/json",
+//             },
+//         body: JSON.stringify(data)
+//     };
+//     fetch('https://golden-woozy-frog.glitch.me/movies' + "/" + `${data.id}` + "/" + movieEdit)
+//         .then(function (data, status) {
+//             console.log(data);
+//             console.log(status);
+//         });
+// }
+//
+//
+// $(document).on('click', '#edit-movie-btn', function (e) {
+//     e.preventDefault();
+//     let id = $(this).attr("value");
+//     console.log(id);
+//         let movieChanges = {
+//             "title": $(`#edited-title${id}`).val(),
+//             "rating": $(`#edit-rating${id}`).val(),
+//             "genre":$(`#edit-genre${id}`).val(),
+//             "id": id
+//
+//         }
+//    console.log(movieChanges)
+//    editMovie(movieChanges);
+//         getMovies()
+// })

@@ -12,30 +12,31 @@
 
 
 h2{
-    /*font-family: 'poppins', sans-serif;*/
     font-family: 'Sansita', sans-serif;
     color: limegreen;
-    font-size: 50px;
+    font-size: 60px;
+    text-align: center;
 }
 
-.editForm{
+.editForm {
     display: flex;
     justify-content: center;
     align-items: center;
-    align-self: auto;
+    align-self: center;
     padding-bottom: 3px;
     font-family: 'poppins', sans-serif;
     color: orange;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 #editForm{
     border: 1px solid limegreen;
 }
 
-.h6{
+.h6 {
     font-family: 'poppins', sans-serif;
+
 
 }
 
@@ -81,11 +82,11 @@ h2{
     box-shadow: 0 0 5px rgba(255, 255, 255, .3)
 }
 
-span{
+span {
     color: limegreen;
     font-size: 20px;
     text-transform: uppercase;
-    leter-spacing: 1px;
+    letter-spacing: 1px;
     line-height: 200px;
     animation: text 3s ease-in-out infinite;
 }
@@ -115,7 +116,6 @@ body{
 .card-container{
     display: flex;
    flex-wrap: wrap;
-    /*overflow: auto;*/
     justify-content: center;
     align-items: center;
     perspective: 1000px;
@@ -125,7 +125,7 @@ body{
 
 }
 
-.card{
+.card {
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
     border: 3px solid limegreen;
     margin: 10px;
@@ -134,7 +134,13 @@ body{
 
 }
 
-#input{
+#postForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#input {
     display: flex;
     justify-content: end;
     border: 2px solid limegreen;
@@ -142,19 +148,19 @@ body{
 
 }
 
-input{
-    border: 4px solid black;
-    margin-right: 20px;
+input {
+    border: 4px solid limegreen;
+    margin-right: 10px;
 }
 
-lable{
+label {
     margin-right: 10px;
 }
 
 
 select {
-    border: 3px solid black;
-    margin-right: 20px;
+    border: 3px solid limegreen;
+    margin-right: 10px;
 
 }
 
@@ -167,11 +173,11 @@ button{
     border: 2px solid black;
 }
 
-.btn{
+.btn {
     background-color: #FCAA43;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     font-family: 'poppins', sans-serif;
     border: 2px solid black;
 

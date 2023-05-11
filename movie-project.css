@@ -9,7 +9,7 @@
 
 
 h2 {
-    font-family: 'Sansita', sans-serif;
+    font-family: 'poppins', sans-serif;
     color: limegreen;
     font-size: 60px;
     text-align: center;
@@ -29,7 +29,7 @@ h2 {
 }
 
 #editForm {
-    border: 1px solid limegreen;
+    border: 1px solid black;
 }
 
 .h6 {
@@ -142,13 +142,13 @@ body {
 #input {
     display: flex;
     justify-content: end;
-    border: 2px solid limegreen;
+    border: 1px solid limegreen;
 
 
 }
 
 input {
-    border: 4px solid limegreen;
+    border: 1px solid lime;
     margin-right: 10px;
 }
 
@@ -158,7 +158,7 @@ label {
 
 
 select {
-    border: 3px solid limegreen;
+    border: 1px solid limegreen;
     margin-right: 10px;
 
 }
